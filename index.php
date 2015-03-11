@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <html>
-   <head>
-      <title>Team Gandhi</title>
-      <link rel="stylesheet" href="css/bootstrap.min.css">
+    <head>
+        <title>Team </title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     </head>
-   <body>
-      <div class="container">
-         <header id="header" class="page-header col-lg-12">
-            <h1> <small>Employee Payroll System</small></h1>
+    <body>
+        <div class="container">
+           <header id="header" class="page-header col-lg-12">
+             <h1> <small>Employee Payroll System</small></h1>
          </header>
-      </div>
-      <div class="container">
-         <section id="login" class="col-lg-offset-4 col-lg-4">
-            <h2>Login</h2>
-            <form class="form">
-               <div class="form-group">
-                  <input type="text" class="form-control" id="input_hruname" placeholder="username" />
-               </div>
-               <div class="form-group">
-                  <input type="password" class="form-control" id="input_password" placeholder="Password">
-               </div>
-               <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                     <button type="button" id="button_login" class="btn btn-default">Sign in</button>
-                  </div>
-               </div>
-            </form>
-         </section>
-      </div>
-      <div class="container">
+         </div>
+        <?php
+
+        session_start();
+
+        if (isset($_POST["username"]) && isset($_POST["password"]))
+        {
+            include_once "php/users.php";
+
+            if (Users::login($_POST["username"], $_POST["password"]))
+            {
+                $_SESSION["username"] = $_POST["username"];
+            }
+            else
+            {
+                echo "Invalid login credentials";
+            }
+        }
+
+        if (isset($_SESSION["username"]))
+        {
+            include "MainPage.html";
+        }
+        else
+        {
+            include "login.html";
+        }
+
+        ?>
+        <div class="container">
          <footer id="footer" class="footer col-lg-12">
             <ul class="list-inline">
                   <li><h4>Copyright: Team Gandhi</h4></li>
             </ul>
          </footer>
       </div>
-   </body>
+
+    </body>
 </html>
