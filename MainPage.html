@@ -25,6 +25,60 @@
                 </ul>
             </div>
         </div>
+        <div class="container page" id="pageAddEmployee">
+    <section class="col-lg-offset-4 col-lg-4">
+        <h2>Add Employee</h2>
+
+        <form class="form" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" id="addFirstName" placeholder="First name"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="addLastName" placeholder="Last name">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="addSalary" placeholder="Salary"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="addUsername" placeholder="username"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="addpassword" placeholder="password"/>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" id="addEmployeeButton" class="btn btn-default">Add
+                        Employee
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+
+// Edit Employee
+<div class="container page" id="pageViewEmployees">
+    <section id="user" class="col-lg-offset-2 col-lg-8">
+        <h2>View remove list</h2>
+
+        <form class="form">
+            <div class="form-group">
+                <label for="employeeList">Select Employee</label>
+                <select type="text" class="form-control" id="employeeList">
+                </select>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" id="vieweditEmployeeButton" type="button" class="btn btn-default">edit</button>
+                    <button type="button" id="removeEmployeeButton" type="button" class="btn btn-default">Remove</button>
+                </div>
+            </div>
+        </form>
+    </section>
+</div>
+
+
     </nav>
 </div>
 <script src="js/main.js"></script>
