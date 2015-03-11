@@ -1,43 +1,31 @@
-<!DOCTYPE html>
-<html>
-   <head>
-      <title>Team Gandhi</title>
-      <link rel="stylesheet" href="css/bootstrap.min.css">
-      <link rel="stylesheet" type="text/css" href="css/style.css">
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-   </head>
-   <body>
-      <div class="container">
-         <header id="header" class="page-header col-lg-12">
-            <h1> <small>Employee Payroll System</small></h1>
-         </header>
-      </div>
-      <div class="container">
-       <nav>
-         <a class="menu_button" onclick="displayPage('AddEmployee.html');">Add Employee</a>
-         <a class="menu_button" onclick="displayPage('edit_remove.html');">Edit/View/Remove</a>
-         <a class="menu_button" onclick="displayPage('calculate_payroll.html');">Calculate Payroll</a>
-        </nav>
-      </div>
 
-      <div class="container" id="pageContent"></div>
-      <div class="container">
-         <footer id="footer" class="footer col-lg-12">
-            <ul class="list-inline">
-                  <li><h4>Copyright: Team </h4></li>
-            </ul>
-         </footer>
-      </div>
-      <script>
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Employee Payroll System</a>
+            </div>
 
-      function displayPage(pageUrl) {
-        
-        $.get(pageUrl,function(data) {
-          $("#pageContent").html(data);
-        });
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a id="menuAddEmployee" href="#">Add Employee</a></li>
+                    <li><a id="menuViewEmployees" href="#">View Employees</a></li>
+                    <li><a id="menuViewEmployees" href="#">Calculate Payroll</a></li>
+ 
 
-      }
-
-      </script>
-   </body>
-</html>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a id="menuLogout">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<script src="js/main.js"></script>
