@@ -1,0 +1,94 @@
+
+<html>
+<head>
+   <link rel="stylesheet" href="css/bootstrap.min.css">
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+   <script type="js/main.js"></script>
+</head>
+<!-- header -->
+<div class="container" id="pageContent"></div>
+      <div class="container">
+         <header id="header" class="header col-lg-12">
+            <h1> <small>Employee Payroll System</small></h1>
+         </header>
+    </div>
+    <!-- navigation bar container -->
+<div class="container" id="pagecontent">
+	<nav class="navbar navbar-default">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Home</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a id="menuUpdateInfo" href="#">Update Info</a></li>
+                    <li><a id="menuTimeSheet" href="#">Time Sheet</a></li>
+                    <li><a id="menuGetReport" href="#">Get Report</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a id="menuLogout" href="#">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+<!-- update info -->
+<div class="container page" id="pageAddUpdateInfo">
+    <section class="col-lg-offset-4 col-lg-4">
+      <h2>Update Info</h2>
+        <form class="form" method="post"></form>
+
+           <div class="form-group">
+              <input type="text" class="form-control" idd="editUserName" placeholder="User Name">
+           </div>
+
+           <div class="form-group">
+              <input type="text" class="form-control" idd="editFirstName" placeholder="First Name">
+           </div>
+
+           <div class="form-group">
+              <input type="text" class="form-control" idd="editLastName" placeholder="Last Name">
+           </div>
+
+           <div class="form-group">
+                <input type="text" class="form-control" id="addPhone" placeholder="Phone"/>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="addPassword" placeholder="Password"/>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="addAddress" placeholder="Address"/>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" id="addUpdateInfo" class="btn btn-default">Add
+                        Employee
+                    </button>
+                </div>
+            </div>
+      </form>
+
+    </section>
+</div>
+
+
+<!-- footer -->
+<div class="container" id="pageContent"></div>
+      <div class="container">
+         <footer id="footer" class="footer col-lg-12">
+            <ul class="list-inline">
+                  <li><h4>Copyright: Team </h4></li>
+            </ul>
+         </footer>
+</div>
+</html>
