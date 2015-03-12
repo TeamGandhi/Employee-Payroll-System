@@ -1,4 +1,6 @@
 
+<script src="js/main.js"></script>
+
 <div class="container">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -17,19 +19,23 @@
                 <ul class="nav navbar-nav">
                     <li><a id="menuAddEmployee" href="#">Add Employee</a></li>
                     <li><a id="menuViewEmployees" href="#">View Employees</a></li>
-                    <li><a id="menuViewEmployees" href="#">Calculate Payroll</a></li>
-                    <li><a id="menuViewEmployees" href="#">Generate Report</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a id="menuLogout">Logout</a></li>
+                    <li><a id="menuLogout" href="#">Logout</a></li>
                 </ul>
             </div>
         </div>
-        <div class="container page" id="pageAddEmployee">
+    </nav>
+</div>
+
+<div class="container page" id="pageAddEmployee">
     <section class="col-lg-offset-4 col-lg-4">
         <h2>Add Employee</h2>
 
         <form class="form" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" id="addUsername" placeholder="Username"/>
+            </div>
             <div class="form-group">
                 <input type="text" class="form-control" id="addFirstName" placeholder="First name"/>
             </div>
@@ -40,12 +46,17 @@
                 <input type="text" class="form-control" id="addSalary" placeholder="Salary"/>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="addUsername" placeholder="username"/>
+                <input type="text" class="form-control" id="addPhone" placeholder="Phone"/>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control" id="addpassword" placeholder="password"/>
+                <input type="text" class="form-control" id="addPassword" placeholder="Password"/>
             </div>
-
+            <div class="form-group">
+                <input type="text" class="form-control" id="addDesignation" placeholder="Designation"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="addAddress" placeholder="Address"/>
+            </div>
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
                     <button type="button" id="addEmployeeButton" class="btn btn-default">Add
@@ -57,7 +68,6 @@
     </section>
 </div>
 
-// Edit Employee
 <div class="container page" id="pageViewEmployees">
     <section id="user" class="col-lg-offset-2 col-lg-8">
         <h2>View remove list</h2>
@@ -79,6 +89,41 @@
 </div>
 
 
-    </nav>
+<div class="container page" id="pageEditEmployee">
+    <section class="col-lg-offset-4 col-lg-4">
+        <h2>Edit Employee</h2>
+
+        <form class="form" method="post">
+            <div class="form-group">
+                <input type="text" class="form-control" id="editUsername" placeholder="Username"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="editFirstName" placeholder="First name"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="editLastName" placeholder="Last name">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="editSalary" placeholder="Salary"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="editPhone" placeholder="Phone"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="editPassword" placeholder="Password"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="editDesignation" placeholder="Designation"/>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" id="editAddress" placeholder="Address"/>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" id="editEmployeeButton" class="btn btn-default">Edit Employee
+                    </button>
+                </div>
+            </div>
+        </form>
+    </section>
 </div>
-<script src="js/main.js"></script>
