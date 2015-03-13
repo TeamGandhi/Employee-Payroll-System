@@ -3,10 +3,13 @@
 <head>
    <link rel="stylesheet" href="css/bootstrap.min.css">
    <link rel="stylesheet" type="text/css" href="css/style.css">
-   <script type="js/main.js"></script>
+   <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="js/employee.js"></script>
+   <script src="js/main.js"></script>
 </head>
+<body>
 <!-- header -->
-<div class="container" id="pageContent"></div>
+<!-- <div class="container" id="pageContent"></div> -->
       <div class="container">
          <header id="header" class="header col-lg-12">
             <h1> <small>Employee Payroll System</small></h1>
@@ -33,7 +36,7 @@
                     <li><a id="menuGetReport" href="#">Get Report</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a id="menuLogout" href="#">Logout</a></li>
+                    <li><a id="menuLogout" href="/employee/php/logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -46,15 +49,15 @@
         <form class="form" method="post"></form>
 
            <div class="form-group">
-              <input type="text" class="form-control" idd="editUserName" placeholder="User Name">
+              <input type="text" class="form-control" id="editUserName" placeholder="User Name">
            </div>
 
            <div class="form-group">
-              <input type="text" class="form-control" idd="editFirstName" placeholder="First Name">
+              <input type="text" class="form-control" id="editFirstName" placeholder="First Name">
            </div>
 
            <div class="form-group">
-              <input type="text" class="form-control" idd="editLastName" placeholder="Last Name">
+              <input type="text" class="form-control" id="editLastName" placeholder="Last Name">
            </div>
 
            <div class="form-group">
@@ -71,8 +74,30 @@
 
             <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-10">
-                    <button type="button" id="addUpdateInfo" class="btn btn-default">Add
-                        Employee
+                    <button type="button" id="buttonUpdateInfo" class="btn btn-default">Update Employee
+                    </button>
+                </div>
+            </div>
+      </form>
+
+    </section>
+</div>
+<!-- Update Time sheet -->
+<div class="container page" id="pageAddTimeSheet">
+    <section class="col-lg-offset-4 col-lg-4">
+      <h2>Update Info</h2>
+        <form class="form" method="post"></form>
+
+           <div class="form-group">
+              <input type="date" class="form-control" id="addDate" placeholder="Date">
+           </div>
+
+           <div class="form-group">
+              <input type="text" class="form-control" id="addTimeIn" placeholder="Time In">
+           </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="button" id="buttonTimeIn" class="btn btn-default">Add time in
                     </button>
                 </div>
             </div>
@@ -82,13 +107,15 @@
 </div>
 
 
+
 <!-- footer -->
-<div class="container" id="pageContent"></div>
+<div class="container"></div>
       <div class="container">
          <footer id="footer" class="footer col-lg-12">
             <ul class="list-inline">
-                  <li><h4>Copyright: Team </h4></li>
+                  <li><h4>Copyright: Team Gandhi</h4></li>
             </ul>
          </footer>
 </div>
+</body>
 </html>
