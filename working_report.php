@@ -86,44 +86,5 @@
         </table>
     </div>
 
-    <script>
-        $(document).ready(function(){
-            var month = '<?php echo $_GET['month']; ?>'; 
-            if(month !=""){
-               $('#month').val(month);
-            }
-            var year = '<?php echo $_GET['year']; ?>';
-            if(year !=""){
-               $('#year').val(year);
-            }
-            /* Change Month value */
-            $("#month").change(function(){
-                var month_val = $("#month").val();
-                var year_val = $("#year").val();
-                
-                $.get("php/working_report.php", 
-                    {month:month_val, year:year_val},
-                    function(data){
-                        window.location.href = 'employee_working_report.php?month='+month_val+'&year='+year_val;
-                    });
-           });
-           /* Change year Value */
-           $("#year").change(function(){
-                var month_val = $("#month").val();
-                var year_val = $("#year").val();
-                
-                $.get("php/working_report.php", 
-                    {month:month_val, year:year_val},
-                    function(data){
-                        window.location.href = 'employee_working_report.php?month='+month_val+'&year='+year_val;
-                    });
-           });
-           
-           $("#generate_report").click(function(){
-                var month_val = $("#month").val();
-                var year_val = $("#year").val();
-                window.location.href = 'employee_excel_sheet.php?month='+month_val+'&year='+year_val;
-           });
-        });
-    </script>
+   
 </body>
