@@ -13,7 +13,7 @@ include_once "dbConnection.php";
         }
 
     }
-    //Find total num of hours worked
+    //Find time difference
     function timeDifference($timeEnd, $timeStart){
       $tResult = strtotime($timeEnd) - strtotime($timeStart);
       return date("G:i", $tResult);
@@ -24,6 +24,5 @@ include_once "dbConnection.php";
         Times::insertTime($_POST["date"],$_POST["timeIn"],$_POST['timeOut'],$working_hours);
     }
 
-
-
+#Employees::updateEmployee('asdf','asdf','asdf','asdf','asdf','asdf','asdf');
 
