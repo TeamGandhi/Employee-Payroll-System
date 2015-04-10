@@ -1,4 +1,11 @@
-
+<?php 
+    include 'php/working_hours_list.php';
+    $months = array(
+        '1' => 'January', '2' => 'february', '3' => 'March', '4' => 'April', '5' => 'May', '6' => 'June', '7' => 'July', '8' => 'August',
+        '9' => 'September', '10' => 'October', '11' => 'November', '12' => 'December'
+    );
+    $year = date('Y');
+?>
 <title>Team Gandhi</title>
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -34,8 +41,26 @@
             </div>
         </nav>
     </div>
-            </select>
-      
+    <div class="container">
+        <!-- To Get Months List -->
+        <select id="month">
+            <?php
+                foreach ($months as $m => $month): ?>
+            <option value="<?php echo $m; ?>" <?php if($_GET['month'] == $m) { echo 'SELECTED';} ?>><?php echo $month; ?></option>
+            <?php
+                endforeach;
+            ?>
+        </select>
+        <!-- To Get Years List -->
+        <select id="year">
+            <option value="<?php echo ($year-1); ?>" <?php if($_GET['year'] == ($year-1)) { echo 'SELECTED';} ?>><?php echo ($year-1); ?></option>
+            <option value="<?php echo $year; ?>" <?php if($_GET['year'] == ($year-1)) { echo 'SELECTED';} ?>><?php echo $year; ?></option>
+        </select>
+        <?php
+            if (!empty($data)) {
+                echo '<button id="generate_report">Generate Report</button>';
+            }
+        ?>
     </div>
     <div class="container" id="empoyee_working_hours_content">
         <h2>Employee Monthly Report</h2>
@@ -49,9 +74,54 @@
                 </tr>
             </thead>
             <tbody>
-               
+                <?php
+                if (!empty($employee_working_hours)) {
+                    foreach ($employee_working_hours as $working_hours): ?>
+                        <tr>
+                            <td>
+                                <?php echo $working_hours['date']; ?>
+                            </td>
+                            <td>
+                                <?php echo $working_hours['time']; ?>
+                            </td>
+                            <td>
+                                <?php echo $working_hours['timeout']; ?>
+                            </td>
+                            <td>
+                                <?php echo $working_hours['hours']; ?>
+                            </td>
+                        </tr>
+                    <?php
+                    endforeach;
+                }
+                ?>
             </tbody>
         </table>
     </div>
-    
+    <script>
+        /* For Table */
+        $('#working_hours').dataTable();
+        /* Change Month value */
+        $("#month").change(function(){
+            var month_val = $("#month").val();
+            var year_val = $("#year").val();
+
+            $.get("php/working_hours_list.php", 
+                {month:month_val, year:year_val},
+                function(data){
+                    window.location.href = 'employee_working_hours.php?month='+month_val+'&year='+year_val;
+                });
+       });
+       /* Change year Value */
+       $("#year").change(function(){
+            var month_val = $("#month").val();
+            var year_val = $("#year").val();
+
+            $.get("php/working_hours_list.php", 
+                {month:month_val, year:year_val},
+                function(data){
+                    window.location.href = 'employee_working_hours.php?month='+month_val+'&year='+year_val;
+            });
+       });
+    </script>
 </body>
