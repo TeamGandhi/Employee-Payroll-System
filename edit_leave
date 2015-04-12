@@ -1,4 +1,7 @@
-<head>
+<?php 
+include 'php/leave.php';
+?>
+    <head>
         <title>Team Gandhi</title>
         <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -36,7 +39,36 @@
             <section class="col-lg-offset-4 col-lg-4">
               <h2>Leave Application</h2>
                 <form method="post" id="add_leave_form">
-                                       <div class="form-group">
+                    <input type="hidden" id="leave_id" value="<?php echo $leave[0]['id']; ?>" />
+                    <input type="hidden" id="employee_id" value="<?php echo $leave[0]['employee_id']; ?>" />
+                    <!-- Name -->
+                   <div class="form-group">
+                       <input type="text" class="form-control" id="name" value="<?php echo $leave[0]['name']; ?>" placeholder="Name" disabled="disabled">
+                   </div>
+                    <!-- Description -->
+                   <div class="form-group">
+                       <textarea type="text" id="description" class="form-control" disabled="disabled" placeholder="Description"><?php echo htmlspecialchars($leave[0]['description']);?></textarea>
+                   </div>
+                    <!-- From Date -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="from_date" disabled="disabled" value="<?php echo $leave[0]['from_date']; ?>"  placeholder="From Date">
+                    </div>
+                    <!-- To Date -->
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="to_date" disabled="disabled" value="<?php echo $leave[0]['to_date']; ?>"  placeholder="To Date">
+                    </div>
+                    <!-- Leave Status -->
+                    <div class="form-group">
+                       <select id="status">
+                           <?php 
+                            foreach ($leave_status as $s => $status): ?>
+                           <option value="<?php echo $s; ?>" <?php if($leave[0]['status'] == $s){ echo 'SELECTED';} ?>><?php echo $status; ?></option>
+                           <?php
+                            endforeach;
+                           ?>
+                       </select>
+                   </div>
+                    <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <button type="button" id="buttonUpdateEditLeaveInfo" class="btn btn-default">Submit
                             </button>
@@ -47,3 +79,21 @@
         </div>
         
     </body>
+<script>
+    $('#buttonUpdateEditLeaveInfo').click(function(){
+        var leave_id = $("#leave_id").val();
+        var name = $("#name").val();
+        var description = $("#description").val();
+        var user_id = $("#user_id").val();
+        var employee_id = $("#employee_id").val();
+        var from_date = $("#from_date").val();
+        var to_date = $("#to_date").val();
+        var status = $("#status").val();
+        
+        $.post("php/leave.php", 
+         {leave_id:leave_id, name: name, description:description, user_id:user_id, employee_id:employee_id,from_date:from_date, to_date:to_date,status:status,update:true},
+         function(data){
+           window.location.href = '/fw/hr/employee_leaves.php';
+         });
+    });
+</script>
