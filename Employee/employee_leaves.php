@@ -1,3 +1,6 @@
+<?php 
+include "php/leaves_list.php";
+?>
 <html>
     <head>
         <title>Team Gandhi</title>
@@ -28,6 +31,8 @@
 
                     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                         <ul class="nav navbar-nav">
+                            <li><a class="employee_workingHours" href="javascript:void(0);">Get Report</a></li>
+                            <li><a href="add_leave.php">Add Leave</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li><a id="menuLogout" href="logout.php">Logout</a></li>
@@ -50,8 +55,62 @@
                     </tr>
                 </thead>
                 <tbody>
-                    
+                    <?php
+                    if (!empty($leaves_list)) {
+                        foreach ($leaves_list as $leave):  ?>
+                            <tr>
+                                <td>
+                                    <?php echo $leave['name']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $leave['description']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $leave['from_date']; ?>
+                                </td>
+                                <td>
+                                    <?php echo $leave['to_date']; ?>
+                                </td>
+                                <td>
+                                    <?php 
+                                        if ($leave['status'] == 'P') {
+                                            echo 'Pending';
+                                        } else if ($leave['status'] == 'A') {
+                                            echo 'Approved';
+                                        } else if ($leave['status'] == 'R') {
+                                            echo 'Rejected';
+                                        }
+                                    ?>
+                                </td>
+                                <td>
+                                    <button class="btn btn-primary delete_leave" onclick='confirm_delete("<?php echo $leave['id']; ?>","<?php echo $leave['name']; ?>"); return false;'>Delete</button>
+                                </td>
+                            </tr>
+                        <?php
+                        endforeach;
+                    }
+                    ?>
                 </tbody>
             </table>
         </div>
     </body>
+    <script>
+        /***** Employee Working Hours List  ******/
+        $(".employee_workingHours").click(function(){
+            var currentMonth = (new Date).getMonth() + 1;
+            var currentYear = (new Date).getFullYear();
+            window.location.href = 'employee_working_hours.php?month='+currentMonth+'&year='+currentYear;
+        });
+        /* TO delete leave */
+        function confirm_delete(leave_id,leave_name) {
+            var msg=confirm("Are you sure you want to delete " + leave_name + " ?");
+            if (msg==true)
+            {
+              window.location.href = 'php/leaves_list.php?id='+leave_id+'&name=delete';
+            }
+        }
+
+        /* To display table */
+        $('#leaves_list').dataTable();
+    </script>
+</html>
