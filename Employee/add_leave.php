@@ -1,4 +1,8 @@
-
+<?php 
+include "php/leave.php";
+$current_year = date('Y');
+$current_month = date('m');
+?>
     <head>
         <title>Team Gandhi</title>
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
@@ -72,7 +76,15 @@
                    <div class="form-group">
                        <select id="user_id">
                            <option value="">Select User</option>
-                           
+                           <?php
+                           if (!empty($users_list)) {
+                                foreach ($users_list as $user): 
+                            ?>
+                                <option value="<?php echo $user['Id']; ?>"><?php echo $user['Username']; ?></option>
+                           <?php
+                                endforeach;
+                           }
+                           ?>
                        </select>
                        <div class="error" id="leave_user"></div>
                    </div>
@@ -85,6 +97,50 @@
               </form>
             </section>
         </div>
-        
+        <script>
+            /** Submit Add Leave **/
+            $('#AddLeaveInfo').click(function(){
+                var name = $("#name").val();
+                var description = $("#description").val();
+                var user_id = $("#user_id").val();
+                var from_date = $("#from_date").val();
+                var to_date = $("#to_date").val();
+                var employee_id = $("#employee_id").val();
+                if (name !="" && description !="" && user_id !="" && from_date !="" && to_date !="") {
+                    $.post("php/leave.php", 
+                        {name: name, description:description, user_id:user_id, employee_id:employee_id,from_date:from_date, to_date:to_date,insert:true},
+                        function(data){
+                            window.location.href = '/fw/employee/employee_leaves.php';
+                        });
+                } else {
+                    if (name =="") {
+                        $("#leave_name").html('Please enter name');
+                    } else {
+                        $("#leave_name").html('');
+                    }
+                    if (description =="") {
+                        $("#leave_description").html('Please enter description');
+                    } else {
+                        $("#leave_description").html('');
+                    }
+                    if (user_id =="") {
+                        $("#leave_user").html('Please select user name');
+                    } else {
+                        $("#leave_user").html('');
+                    }
+                    if (from_date =="") {
+                        $("#leave_from_date").html('Please enter from date');
+                    } else {
+                        $("#leave_from_date").html('');
+                    }
+                    if (to_date =="") {
+                        $("#leave_to_date").html('Please enter to date');
+                    } else {
+                        $("#leave_to_date").html('');
+                    }
+                }
+            }); 
+
+        </script>
     </body>
     </html>
